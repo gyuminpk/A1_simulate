@@ -87,6 +87,8 @@ I refered the Salvadord's paper that simulated macaque's auditory thalamocortica
   Total neuron count and percentage of Exc neuron
 </div>
 
+You can get the A1 Network Parameter in **density_test.py** and **cellDensity.pkl**
+
 So, I will build the A1 simulated network with above neuron proportion by layers.
 I will use the RS, FS cell parameter for Exc, Inh neuron.
 
