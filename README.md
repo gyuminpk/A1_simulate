@@ -33,7 +33,7 @@ Izhi2007b - To simulate RS (regular spiking), FS (fast spiking) neurons
 </p>
 
 <div align="center">
-  Ideal / Simulated RS Neuron Electrophysics
+  Ideal(left, DNS) / Simulated(right, My work) RS Neuron Electrophysics
 </div>
 
 <p align="center">
@@ -43,7 +43,7 @@ Izhi2007b - To simulate RS (regular spiking), FS (fast spiking) neurons
 </p>
 
 <div align="center">
-  Ideal / Simulated FS Neuron Electrophysics
+  Ideal(left, DNS) / Simulated(right, My work) FS Neuron Electrophysics
 </div>
 
 
@@ -55,6 +55,7 @@ You can generate the voltage trace through **param_simul.py**, and parameter opt
 
 ## Network Reference
 
+### Neuron Density for Layers 
 I refered the Salvadord's paper that simulated macaque's auditory thalamocortical circuits using NetPyne.
 
 (Data-driven multiscale model of macaque auditory thalamocortical circuits reproduces in vivo dynamics, Salvadord et al., 2023, [Link](https://www.cell.com/cell-reports/fulltext/S2211-1247(23)01390-6)
@@ -80,7 +81,7 @@ I refered the Salvadord's paper that simulated macaque's auditory thalamocortica
 |L6|142870|4493|5991|904|2727|156985|91|
 
 <p align="center">
-<img src="https://github.com/gyuminpk/A1_simulate/assets/171655753/40c5223d-2b72-4ef3-8fe3-9e2aaa0f1652" width="80%" height="80%">
+<img src="https://github.com/gyuminpk/A1_simulate/assets/171655753/40c5223d-2b72-4ef3-8fe3-9e2aaa0f1652" width="50%" height="50%">
 </p>
 
 <div align="center">
@@ -91,4 +92,49 @@ You can get the A1 Network Parameter in **density_test.py** and **cellDensity.pk
 
 So, I will build the A1 simulated network with above neuron proportion by layers.
 I will use the RS, FS cell parameter for Exc, Inh neuron.
+
+### Connection Parameter
+
+In the salvadord paper, they use specific values of synaptic weight and probability for synaptic connection that is dependant to layer-layer connection.
+
+ex)
+|weight of E->E connection(from\to)|L1|L2|L3|L4|L5A|L5B|L6| 
+|---|---|---|---|---|---|---|---|
+|L1|-|-|-|-|-|-|-|
+|L2|-|0.36|0.36|0.34|0.74|0.74|0|
+|L3|-|0.36|0.36|0.34|0.74|0.74|0|
+|L4|-|0.78|0.78|0.83|0.63|0.63|0.96|
+|L5A|-|0.47|0.47|0.38|0.75|0.75|0.4|
+|L5B|-|0.47|0.47|0.38|0.75|0.75|0.4|
+|L6|-|0|0|0|0.23|0.23|0.94|
+
+
+But I am planning to build the simplificated model of A1, so all I need is synaptic weight/probability for the (E or I)->(E or I) connection.
+
+I found the paper that conducts the in-vitro patch clamp to assess synaptic connectivity in mouse V1.
+
+(reference: Differential connectivity and response dynamics of excitatory and inhibitory neurons in visual cortex, Sonja B Hofer et al., 2011,. [Link](https://www.nature.com/articles/nn.2876)
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/18a5d696-037f-446b-9c3c-5e918eb29955" width="50%" height="50%">
+</p>
+
+<div align="center">
+  Figure 2 in the paper: Assessing synaptic connectivity in vitro between neurons functionally characterized in vivo.
+</div>
+
+Figure 2(e) and (i) could be used for weights, and 2(h) for propabilities. 
+
+
+Also, in [Spatial Profile of Excitatory and Inhibitory Synaptic Connectivity in Mouse Primary Auditory Cortex, Robert B. Levy and Alex D. Reyes, 2012](https://www.jneurosci.org/content/32/16/5609), they show Synapse amplitude for each connection between E and I neurons.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ffa1b73a-8f93-404e-a376-27b3923d079d" width="50%" height="50%">
+</p>
+
+<div align="center">
+  Synapse amplitude and short-term dynamics
+</div>
+
+For these resources, I determined the connection parameter to simulated these features.
 
