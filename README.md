@@ -138,3 +138,17 @@ Also, in [Spatial Profile of Excitatory and Inhibitory Synaptic Connectivity in 
 
 For these resources, I determined the connection parameter to simulated these features.
 
+## Network Input
+
+I found a paper that showed a thalamic inputs to A1 [Synaptic Properties of Thalamic Input to Layers 2/3 and 4 of Primary Somatosensory and Auditory Cortices, Angela N. Viaene aet al., 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3023380/) They said there are two type of thalamic input; Driver, modulators. Driver constitutes a main information and Modulator influences to the main information. Actually they are not ideal driver and modulator, but they have functional similarity.
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a3824ca2-d4a8-4ab6-a4aa-855b855d94a8" width="50%" height="50%">
+</p>
+
+<div align="center">
+  Fig 4 in paper, EPSP graph by driver(class 1)and modulator(class 2). 
+</div>
+
+Class 1 Input make all-or-none response, and Class 2 Input make level-dependant response.
+
